@@ -1,128 +1,251 @@
-<!-- =========================
-FILE 1: index.html (Halaman Utama)
-========================= -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Profil Jildan</title>
+
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
-    font-family:'Segoe UI',sans-serif;
-    background:linear-gradient(135deg,#0f172a,#1e3a8a,#7c3aed);
-    color:white;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a, #7c3aed);
+    color: white;
+    min-height: 100vh;
 }
-.card{
-    width:100%;
-    max-width:900px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(14px);
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:30px;
-    padding:50px;
-    text-align:center;
-    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    z-index: 1000;
 }
-.photo{
-    width:220px;
-    height:220px;
-    border-radius:50%;
-    overflow:hidden;
-    margin:auto;
-    border:6px solid rgba(255,255,255,0.3);
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
-.photo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
 }
-h1{
-    font-size:3rem;
-    margin:20px 0 10px;
+
+.dropdown {
+    position: absolute;
+    top: 75px;
+    right: 20px;
+    width: 250px;
+    display: none;
+    flex-direction: column;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
 }
-.typing{
-    font-size:1.3rem;
-    color:#cbd5e1;
-    min-height:35px;
-    margin-bottom:20px;
+
+.dropdown.show {
+    display: flex;
 }
-p{
-    color:#f1f5f9;
-    line-height:1.8;
-    margin-bottom:30px;
+
+.dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: 0.3s;
 }
-.menu{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
+
+.dropdown a:hover {
+    background: rgba(255,255,255,0.1);
 }
-.menu a{
-    text-decoration:none;
-    color:white;
-    padding:12px 24px;
-    border-radius:999px;
-    background:linear-gradient(90deg,#06b6d4,#8b5cf6);
-    font-weight:bold;
-    transition:.3s;
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
 }
-.menu a:hover{
-    transform:scale(1.05);
+
+/* CARD */
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px;
+}
+
+/* PHOTO */
+.photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; 
+    overflow: hidden;
+    border: 6px solid rgba(255,255,255,0.3);
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    flex-shrink: 0;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+}
+
+/* INFO */
+.info {
+    flex: 1;
+    min-width: 280px;
+}
+
+.info h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.typing {
+    font-size: 1.3rem;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+    min-height: 35px;
+}
+
+.info p {
+    line-height: 1.8;
+    color: #f1f5f9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero {
+        text-align: center;
+        padding: 35px 25px;
+    }
+
+    .info h1 {
+        font-size: 2.4rem;
+    }
+
+    .photo {
+        width: 220px;
+        height: 220px;
+    }
+
+    .dropdown {
+        width: 220px;
+        right: 10px;
+    }
 }
 </style>
 </head>
 <body>
 
-<div class="card">
-    <div class="photo">
-        <img src="foto-profile.png" alt="Foto Profil">
-    </div>
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">Jildan DEV</div>
 
-    <h1>Jildan</h1>
-    <div class="typing" id="typing"></div>
+    <button class="menu-toggle" onclick="toggleMenu()">
+        &#9776;
+    </button>
 
-    <p>
-        Halo! Saya adalah seorang pelajar yang suka belajar teknologi,
-        desain, dan membuat proyek kreatif.
-    </p>
-
-    <div class="menu">
+    <nav class="dropdown" id="dropdownMenu">
+        <a href="index.html">Home</a>
         <a href="biodata.html">Biodata</a>
         <a href="skill.html">Skill</a>
         <a href="target.html">Target & Impian</a>
         <a href="motto.html">Motto Hidup</a>
+    </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <div class="card">
+        <section class="hero">
+            <div class="photo">
+                <img src="images/foto-profil.png" alt="Foto Profil">
+            </div>
+
+            <div class="info">
+                <h1>Jildan</h1>
+                <div class="typing" id="typing"></div>
+
+                <p>
+                    Halo! Saya adalah seorang pelajar yang suka belajar teknologi,
+                    desain, dan membuat proyek kreatif.
+                </p>
+            </div>
+        </section>
     </div>
 </div>
 
 <script>
+/* MENU TOGGLE */
+function toggleMenu() {
+    document.getElementById('dropdownMenu').classList.toggle('show');
+}
+
+/* TUTUP MENU SAAT KLIK DI LUAR */
+window.addEventListener('click', function(e) {
+    const menu = document.getElementById('dropdownMenu');
+    const button = document.querySelector('.menu-toggle');
+
+    if (!menu.contains(e.target) && !button.contains(e.target)) {
+        menu.classList.remove('show');
+    }
+});
+
+/* TYPING EFFECT */
 const texts = [
-    "Pelajar Kreatif",
-    "Web Developer",
-    "UI Designer",
-    "Future Programmer"
+    'Pelajar Kreatif',
+    'Web Developer',
+    'UI Designer',
+    'Future Programmer'
 ];
 
 let index = 0;
 let charIndex = 0;
 let isDeleting = false;
-const typing = document.getElementById("typing");
+const typing = document.getElementById('typing');
 
 function typeEffect() {
     const current = texts[index];
 
-    if (isDeleting) charIndex--;
-    else charIndex++;
+    if (isDeleting) {
+        charIndex--;
+    } else {
+        charIndex++;
+    }
 
     typing.textContent = current.substring(0, charIndex);
 
@@ -140,7 +263,7 @@ function typeEffect() {
     setTimeout(typeEffect, speed);
 }
 
-typeEffect();
+typeEffect(); 
 </script>
 
 </body>
